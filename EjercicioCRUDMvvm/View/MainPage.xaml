@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EjercicioCRUDMvvm.MainPage"
+             Title="Proveedores">
+
+    <Grid RowDefinitions="Auto,*" Padding="20">
+        <VerticalStackLayout Grid.Row="0" Spacing="10">
+            <Label Text="Agregar Proveedor" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+            <Entry Placeholder="Codigo" 
+                    Text="{Binding ProveedorSeleccionado.Codigo}"/>
+            <Entry Placeholder="Nombre" 
+                   Text="{Binding ProveedorSeleccionado.Nombre}"/>
+            <Entry Placeholder="Dirección" 
+                   Text="{Binding ProveedorSeleccionado.Direccion}"/>
+            <Entry Placeholder="Teléfono" 
+                   Text="{Binding ProveedorSeleccionado.Telefono}"/>
+            <Entry Placeholder="Email" 
+                   Text="{Binding ProveedorSeleccionado.Email}"/>
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Agregar" 
+                        Command="{Binding AgregarProveedorCommand}"/>
+                <Button Text="Editar" 
+                        Command="{Binding EditarProveedorCommand}"/>
+                <Button Text="Eliminar" 
+                        Command="{Binding EliminarProveedorCommand}"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <CollectionView Grid.Row="1" 
+                        ItemsSource="{Binding Proveedores}"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding ProveedorSeleccionado}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Padding="10">
+                        <Label Text="{Binding Codigo}" FontAttributes="Bold"/>
+                        <Label Text="{Binding Nombre}"/>
+                        <Label Text="{Binding Direccion}"/>
+                        <Label Text="{Binding Telefono}"/>
+                        <Label Text="{Binding Email}"/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
