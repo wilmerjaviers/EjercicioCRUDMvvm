@@ -20,7 +20,7 @@ namespace EjercicioCRUDMvvm
             }
             catch (Exception ex)
             {
-                // Aquí podrías agregar logging
+                
                 Console.WriteLine($"Error al obtener proveedores: {ex.Message}");
                 return new List<Proveedor>();
             }
@@ -30,13 +30,13 @@ namespace EjercicioCRUDMvvm
         {
             try
             {
-                // Validaciones básicas
+               
                 if (string.IsNullOrWhiteSpace(proveedor.Nombre))
                 {
                     return false;
                 }
 
-                // Insertar y retornar si fue exitoso
+                
                 return _connection.Insert(proveedor) > 0;
             }
             catch (Exception ex)
@@ -50,13 +50,13 @@ namespace EjercicioCRUDMvvm
         {
             try
             {
-                // Validaciones básicas
+                
                 if (proveedor.Id == 0 || string.IsNullOrWhiteSpace(proveedor.Nombre))
                 {
                     return false;
                 }
 
-                // Actualizar y retornar si fue exitoso
+                
                 return _connection.Update(proveedor) > 0;
             }
             catch (Exception ex)
@@ -70,13 +70,13 @@ namespace EjercicioCRUDMvvm
         {
             try
             {
-                // Validar que el ID sea válido
+                
                 if (id <= 0)
                 {
                     return false;
                 }
 
-                // Eliminar y retornar si fue exitoso
+                
                 return _connection.Delete<Proveedor>(id) > 0;
             }
             catch (Exception ex)
